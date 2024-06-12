@@ -14,9 +14,9 @@ def extract_text_with_positions(pdf_path):
         parser = PDFParser(file)
         document = PDFDocument(parser)
 
-        rsrcmgr = PDFResourceManager()
-        device = PDFPageAggregator(rsrcmgr, laparams=laparams)
-        interpreter = PDFPageInterpreter(rsrcmgr, device)
+        manager = PDFResourceManager()
+        device = PDFPageAggregator(manager, laparams=laparams)
+        interpreter = PDFPageInterpreter(manager, device)
 
         for page_num, page in enumerate(PDFPage.create_pages(document)):
             interpreter.process_page(page)
